@@ -15,7 +15,8 @@ module.exports = {
         650: '650px',
       },
       fontFamily: {
-        openSans: "'Open Sans', sans-serif"
+        openSans: "'Open Sans', sans-serif",
+        notoSans: "'Noto Sans JP', sans-serif"
       },
       height: {
         600: '600px',
