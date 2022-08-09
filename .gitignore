@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules
+.env.development
 /.pnp
 .pnp.js
 
