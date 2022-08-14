@@ -18,6 +18,8 @@ interface IProps {
 
 const Detail = ({ postDetails }: IProps) => {
   const [post, setPost] = useState(postDetails);
+  const [isPostingComment, setIsPostingComment] = useState<boolean>(false);
+  const [comment, setComment] = useState<string>('');
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isVideoMuted, setIsVideoMuted] = useState<boolean>(false);
   const { userProfile }: any = useAuthStore(); 
@@ -49,6 +51,23 @@ const Detail = ({ postDetails }: IProps) => {
       setPost({ ...post, likes: res.data.likes });
     }
   };
+
+const addComment = async(e) => {
+  e.preventDefault();
+
+  if(userProfile && comment){
+    setIsPostingComment(true);
+
+    const { data } = await axios.put(`${process.env.NEXT_PUBLIC_BASE_URL}/api/post/${post._id}`, {
+      userId: userProfile._id,
+      comment
+    });
+
+    setPost({ ...post, comments: data.comments });
+    setComment('');
+    setIsPostingComment(false);
+  } 
+}
 
   useEffect(() => {
     if (post && videoRef?.current) {
@@ -127,13 +146,13 @@ const Detail = ({ postDetails }: IProps) => {
                   handleDislike={() => handleLike(false)}
                 />}
               </div>
-              {/* <Comments
+              <Comments
                 comment={comment}
                 setComment={setComment}
                 addComment={addComment}
                 comments={post.comments}
                 isPostingComment={isPostingComment}
-              /> */}
+              />
             </div>
           </div>
         </div>
