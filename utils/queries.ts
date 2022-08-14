@@ -74,7 +74,7 @@ export const searchPostsQuery = (searchTerm: string | string[]) => {
         userName,
         image
       },
-  likes,
+      likes,
       comments[]{
         comment,
         _key,
