@@ -8,6 +8,7 @@ import { IoMdAdd } from "react-icons/io";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { createOrGetUser } from "../utils";
 import useAuthStore from "../store/authStore";
+import TikTok from "../public/TikTok.png";
 
 const Navbar = () => {
   const { userProfile, removeUser, addUser } = useAuthStore();
@@ -35,25 +36,25 @@ const Navbar = () => {
               <Link href={`/profile/${userProfile._id}`}>
                 <div>
                   <Image
-                    className='rounded-full cursor-pointer'
+                    className="rounded-full cursor-pointer"
                     src={userProfile.image}
-                    alt='user'
+                    alt="user"
                     width={40}
                     height={40}
                   />
                 </div>
               </Link>
             )}
-             <button
-                type='button'
-                className=' border-2 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer outline-none shadow-md'
-                onClick={() => {
-                  googleLogout();
-                  removeUser();
-                }}
-              >
-                <AiOutlineLogout color='red' fontSize={21} />
-              </button>
+            <button
+              type="button"
+              className=" border-2 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer outline-none shadow-md"
+              onClick={() => {
+                googleLogout();
+                removeUser();
+              }}
+            >
+              <AiOutlineLogout color="red" fontSize={21} />
+            </button>
           </div>
         ) : (
           <GoogleLogin
