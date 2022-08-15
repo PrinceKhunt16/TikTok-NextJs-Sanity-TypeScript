@@ -11,25 +11,23 @@ import useAuthStore from "../store/authStore";
 import TikTok from "../public/TikTok.png";
 
 const Navbar = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const { userProfile, removeUser, addUser } = useAuthStore();
   const router = useRouter();
 
-  const handleSearch = (e: {
-    preventDefault: () => void
-  }) => {
+  const handleSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    if(searchValue){
+    if (searchValue) {
       router.push(`/search/${searchValue}`);
     }
   };
 
   return (
-    <div className="w-full flex justify-between items-center border-b border-gray-200 box-border px-3">
+    <div className="w-full flex justify-between items-center border-b border-gray-100 box-border">
       <Link href="/">
         <div className="w-[100px] md:w-[129px] md:h-[65px] h-[65px] flex items-center">
-          <h1 className="font-light cursor-pointer font-notoSans text-4xl pb-1">
+          <h1 className="font-light text-gray-700 cursor-pointer font-notoSans text-[35px]">
             TikTok
           </h1>
         </div>
@@ -37,17 +35,17 @@ const Navbar = () => {
       <div className="relative hidden md:block">
         <form
           onSubmit={handleSearch}
-          className="absolute md:static top-10 -left-20 bg-white"
+          className="absolute md:static top-10 left-20 bg-white"
         >
           <input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="bg-primary p-3 md:text-md font-medium border-2 border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full  md:top-0"
+            className="bg-gray-100 p-3 h-[44px] md:text-md font-openSans border text-gray-400 border-gray-100 focus:outline-none w-[300px] md:w-[350px] rounded-[5px] md:top-0"
             placeholder="Search accounts and videos"
           />
           <button
             onClick={handleSearch}
-            className="absolute md:right-5 right-6 top-4 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400"
+            className="absolute md:right-[10px] right-[10px] top-[10px] pl-4 text-2xl text-gray-400"
           >
             <BiSearch />
           </button>
@@ -55,46 +53,50 @@ const Navbar = () => {
       </div>
       <div>
         {userProfile ? (
-          <div className="flex gap-5 md:gap-10">
+          <div className="flex gap-4 h-[42px]">
             <Link href="/upload">
-              <button className="border-2 px-2 md:px-4 text-md font-semibold flex items-center gap-2">
-                <IoMdAdd className="text-xl" />{" "}
-                <span className="hidden md:block">Upload </span>
+              <button className="border h-[42px] w-[42px] text-md font-semibold flex items-center justify-center box-border rounded-full">
+                <IoMdAdd className="text-2xl text-gray-400" />
               </button>
             </Link>
-            {userProfile.image && (
-              <Link href={`/profile/${userProfile._id}`}>
-                <div>
-                  <Image
-                    className="rounded-full cursor-pointer"
-                    src={userProfile.image}
-                    alt="user"
-                    width={40}
-                    height={40}
-                  />
-                </div>
-              </Link>
-            )}
             <button
               type="button"
-              className=" border-2 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer outline-none shadow-md"
+              className="border h-[42px] w-[42px] flex items-center justify-center rounded-full cursor-pointer outline-none"
               onClick={() => {
                 googleLogout();
                 removeUser();
               }}
-            >
-              <AiOutlineLogout color="red" fontSize={21} />
+              >
+              <AiOutlineLogout color="gray" fontSize={20} />
             </button>
+              {userProfile.image && (
+                <Link href={`/profile/${userProfile._id}`}>
+                  <div>
+                    <Image
+                      className="rounded-full cursor-pointer"
+                      src={userProfile.image}
+                      alt="user"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                </Link>
+              )}
           </div>
         ) : (
-          <GoogleLogin
-            onSuccess={(response) => {
-              createOrGetUser(response, addUser);
-            }}
-            onError={() => {
-              console.log("Error");
-            }}
-          />
+          <>
+            <span className="font-notoSans">
+              <GoogleLogin
+                onSuccess={(response) => {createOrGetUser(response, addUser);}}
+                onError={() => {console.log("Error");}}    
+                text="signin"
+                size="large"
+                theme="outline"
+                shape="square"
+                width="100px"
+              />
+            </span>
+          </>
         )}
       </div>
     </div>
