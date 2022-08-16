@@ -20,30 +20,30 @@ const SuggestedAccounts: NextPage<IProps> = ({ fetchAllUsers, allUsers }) => {
   .slice(0, allUsers.length);
 
   return (
-    <div className='xl:border-b-2 border-gray-200 pb-4'>
-      <p className='text-gray-500 font-semibold m-3 mt-4 hidden xl:block'>
-        Suggested accounts
+    <div className='border-b border-gray-100 pb-2 pt-2'>
+      <p className='text-gray-500 font-normal font-notoSans mb-2 mt-2 hidden xl:block'>
+        Popular Accounts
       </p>
       <div>
-        {users?.slice(0, 6).map((user: IUser) => (
+        {users?.slice(0, 4).map((user: IUser) => (
           <Link href={`/profile/${user._id}`} key={user._id}>
-            <div className='flex gap-3 hover:bg-primary p-2 cursor-pointer font-semibold rounded'>
-              <div className='w-8 h-8'>
+            <div className='flex justify-center xl:justify-start gap-3 pt-2 pb-2 cursor-pointer font-semibold rounded'>
+              <div className='w-[50px] h-[50px]'>
                 <Image
-                  width={34}
-                  height={34}
-                  className='rounded-full'
+                  width={50}
+                  height={50}
+                  className='rounded-full object-cover'
                   src={user.image}
                   alt='user-profile'
                   layout='responsive'
                 />
               </div>
               <div className='hidden xl:block'>
-                <p className='flex gap-1 items-center text-md font-bold text-primary lowercase'>
+                <p className='flex gap-1 leading-[14px] text-base font-normal font-notoSans text-primary lowercase'>
                   {user.userName.replace(/\s+/g, '')}{' '}
                   <GoVerified className='text-blue-400' />
                 </p>
-                <p className='capitalize text-gray-400 text-xs'>
+                <p className='capitalize text-gray-400 font-notoSans font-normal text-xs pt-1'>
                   {user.userName}
                 </p>
               </div>

@@ -3,32 +3,35 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { topics } from "../utils/constants";
+import Image from "next/image";
 
 const Discover: NextPage = () => {
   const router = useRouter();
   const { topic } = router.query;
 
-  const activeTopicStyle = 'xl:border xl:border-[#F51997] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-[#F51997]';
-  const topicStyle = 'xl:border xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black';
+  const activeTopicStyle =
+    "border border-gray-400 h-[50px] w-[50px] px-3 py-2 rounded rounded-full flex items-center gap-2 justify-center cursor-pointer text-gray-600";
+  const topicStyle =
+    "border border-gray-300 h-[50px] w-[50px] px-3 py-2 rounded rounded-full flex items-center gap-2 justify-center cursor-pointer text-gray-400";
 
   return (
-    <div className="xl:border-b-2 xl:border-gray-200 pb-6">
-      <p className="text-gray-500 font-semibold m-3 mt-4 hidden xl:block">
+    <div className="border-b border-gray-100 pb-4 mt-4">
+      <p className="text-gray-500 font-normal font-notoSans mb-4 hidden xl:block">
         Popular Topics
       </p>
-      <div className="flex gap-3 flex-wrap">
+      <div className="flex justify-center xl:justify-start gap-3 flex-wrap h-[298px] xl:h-[236px] overflow-y-scroll">
         {topics?.map((item) => (
           <Link href={`/?topic=${item.name}`} key={item.name}>
             <div
               className={topic === item.name ? activeTopicStyle : topicStyle}
             >
-              <span className="font-bold text-2xl xl:text-md ">
-                {item.icon}
-              </span>
-              <span
-                className={`font-notoSans text-md hidden xl:block capitalize`}
-              >
-                {item.name}
+              <span className="font-bold text-xl xl:text-md flex items-center justify-center">
+                <Image
+                  src={item.icon}
+                  height={25}
+                  width={25}
+                  className="flex items-center justify-center"
+                />
               </span>
             </div>
           </Link>
