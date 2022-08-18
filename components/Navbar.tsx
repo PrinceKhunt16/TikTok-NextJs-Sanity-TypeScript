@@ -29,15 +29,15 @@ const Navbar = () => {
           </h1>
         </div>
       </Link>
-      <div className="absolute hidden md:block top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]">
+      <div className="absolute hidden sm:block top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]">
         <form
           onSubmit={handleSearch}
-          className="absolute md:static top-10 left-20 bg-white"
+          className="absolute sm:static top-10 left-20 bg-white"
         >
           <input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="bg-gray-100 p-3 pb-[14px] h-[44px] md:text-md font-notoSans font-light tracking-[0.2px] border text-gray-400 border-gray-100 focus:outline-none w-[300px] md:w-[350px] rounded-[5px] md:top-0"
+            className="bg-gray-100 p-3 pb-[14px] h-[44px] md:text-md font-notoSans font-light tracking-[0.2px] border text-gray-400 border-gray-100 focus:outline-none w-[320px] sm:w-[280px] md:w-[310px] rounded-[5px] md:top-0"
             placeholder="Search accounts and videos"
           />
           <button
