@@ -23,21 +23,19 @@ const Navbar = () => {
   return (
     <div className="w-full flex justify-between items-center border-b border-gray-100 box-border relative">
       <Link href="/">
-        <div className="w-[100px] md:w-[129px] md:h-[65px] h-[65px] flex items-center pl-1 xl:pl-0">
-          <h1 className="font-light pl-1 cursor-pointer font-notoSans text-[35px] mb-[2px]">
-            TikTok
-          </h1>
+        <div className="w-[100px] md:w-[129px] md:h-[62px] h-[65px] flex items-center pl-1 xl:pl-0">
+          <h1 className="font-normal pl-1 cursor-pointer font-Caveat text-[36px] mb-[2px]">TIKTOK</h1>
         </div>
       </Link>
       <div className="absolute hidden sm:block top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]">
         <form
           onSubmit={handleSearch}
-          className="absolute sm:static top-10 left-20 bg-white"
+          className="absolute sm:static top-10 left-2"
         >
           <input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="bg-gray-100 p-3 pb-[14px] h-[44px] md:text-md font-notoSans font-light tracking-[0.2px] border text-gray-400 border-gray-100 focus:outline-none w-[320px] sm:w-[280px] md:w-[310px] rounded-[5px] md:top-0"
+            className="bg-[#f9f9f9] p-3 pb-[14px] text-[15px] h-[46px] md:text-md font-notoSans font-normal border text-gray-900 border-[#f6f6f6] focus:outline-none w-[320px] sm:w-[280px] md:w-[310px] rounded-full md:top-0"
             placeholder="Search accounts and videos"
           />
           <button
@@ -56,9 +54,9 @@ const Navbar = () => {
       </div>
       <div>
         {userProfile ? (
-          <div className="flex gap-3 h-[42px] pr-2 xl:pr-0">
+          <div className="flex gap-3 h-[45px] pr-2 xl:pr-0">
             <Link href="/upload">
-              <button className="border h-[42px] w-[42px] text-xl font-semibold flex items-center justify-center box-border rounded-full">
+              <button className="border h-[45px] w-[45px] text-xl font-semibold flex items-center justify-center box-border rounded-full">
                 <Image
                   className="rounded-full cursor-pointer"
                   src={addIcon}
@@ -70,7 +68,7 @@ const Navbar = () => {
             </Link>
             <button
               type="button"
-              className="border h-[42px] w-[42px] flex items-center justify-center rounded-full cursor-pointer outline-none"
+              className="border h-[45px] w-[45px] flex items-center justify-center rounded-full cursor-pointer outline-none"
               onClick={() => {
                 googleLogout();
                 removeUser();
@@ -91,8 +89,8 @@ const Navbar = () => {
                     className="rounded-full cursor-pointer"
                     src={userProfile.image}
                     alt="user"
-                    width={42}
-                    height={42}
+                    width={45}
+                    height={45}
                   />
                 </div>
               </Link>

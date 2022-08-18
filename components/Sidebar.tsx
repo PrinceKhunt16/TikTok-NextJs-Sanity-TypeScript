@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      <div className="w-[65px] md:w-[182px] xl:w-[236px] md:pl-2 xl:pl-0 flex flex-col justify-start xl:border-0">
+      <div className="w-[65px] md:w-[190px] xl:w-[244px] md:pl-2 xl:pl-0 flex flex-col justify-start xl:border-0">
         <Discover />
         <SuggestedAccounts
           fetchAllUsers={fetchAllUsers}
