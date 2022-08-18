@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Router, { useRouter } from "next/router";
-import { AiOutlineLogout } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
-import { IoMdAdd } from "react-icons/io";
+import { useRouter } from "next/router";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { createOrGetUser } from "../utils";
 import useAuthStore from "../store/authStore";
-import { addIcon, logoutIcon, searchIcon, tiktokIcon } from "../utils/constants";
+import { addIcon, logoutIcon, searchIcon } from "../utils/constants";
 
 const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -24,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full flex justify-between items-center border-b border-gray-100 box-border">
+    <div className="w-full flex justify-between items-center border-b border-gray-100 box-border relative">
       <Link href="/">
         <div className="w-[100px] md:w-[129px] md:h-[65px] h-[65px] flex items-center pl-1 xl:pl-0">
           <h1 className="font-light pl-1 cursor-pointer font-notoSans text-[35px] mb-[2px]">
@@ -32,7 +29,7 @@ const Navbar = () => {
           </h1>
         </div>
       </Link>
-      <div className="relative hidden md:block">
+      <div className="absolute hidden md:block top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]">
         <form
           onSubmit={handleSearch}
           className="absolute md:static top-10 left-20 bg-white"

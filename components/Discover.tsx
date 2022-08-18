@@ -16,10 +16,10 @@ const Discover: NextPage = () => {
 
   return (
     <div className="border-b border-gray-100 pb-4 mt-4">
-      <p className="text-gray-500 font-normal font-notoSans mb-4 hidden xl:block">
+      <p className="text-gray-500 font-normal font-notoSans mb-4 hidden md:block">
         Popular Topics
       </p>
-      <div className="flex justify-center xl:justify-start gap-3 flex-wrap h-[298px] xl:h-[236px] overflow-y-scroll">
+      <div className="flex justify-center md:justify-start gap-3 flex-wrap h-[298px] md:h-[236px] xl:h-[236px] overflow-y-scroll">
         {topics?.map((item) => (
           <Link href={`/?topic=${item.name}`} key={item.name}>
             <div

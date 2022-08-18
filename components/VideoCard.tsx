@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiVolumeUp, HiVolumeOff } from "react-icons/hi";
 import { BsFillPlayFill, BsFillPauseFill } from "react-icons/bs";
-import { GoVerified } from "react-icons/go";
-import { BsPlay } from "react-icons/bs";
 import { Video } from "../types";
 
 interface IProps {
@@ -37,7 +35,7 @@ const VideoCard: NextPage<IProps> = ({
   }, [isVideoMuted]);
 
   return (
-    <div className="flex items-start mt-4 mb-4 flex-col w-[95%] md:w-[450px] lg:w-[550px] ">
+    <div className="flex items-start mt-4 mb-4 flex-col w-[95%] md:w-[450px] lg:w-[585px] ">
       <div>
         <div className="flex items-center gap-2 cursor-pointer font-semibold rounded ">
           <div className="md:w-[52px] md:h-[52px] w-[50px] h-[50px] border border-gray-100 rounded-full bg-gray-100">
