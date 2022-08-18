@@ -103,7 +103,7 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <span className="font-notoSans pr-2 xl:pr-0">
+            <span className="font-notoSans flex items-center justify-center pr-2 xl:pr-0">
               <GoogleLogin
                 onSuccess={(response) => {
                   createOrGetUser(response, addUser);

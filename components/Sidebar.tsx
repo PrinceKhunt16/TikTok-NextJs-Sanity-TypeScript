@@ -23,7 +23,7 @@ const Sidebar = () => {
   return (
     <div>
       {showSidebar && (
-        <div className="w-[65px] xl:w-[236px] flex flex-col justify-start xl:border-0 ml-1 xl:ml-0">
+        <div className="w-[65px] xl:w-[236px] flex flex-col justify-start xl:border-0">
           <Discover />
           <SuggestedAccounts
             fetchAllUsers={fetchAllUsers}
