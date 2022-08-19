@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const VideoCard: NextPage<IProps> = ({
-  post: { caption, postedBy, video, _id, likes },
+  post: { caption, postedBy, video, _id, likes, comments },
 }) => {
   const [playing, setPlaying] = useState(false);
   const [like, setLike] = useState(false);
@@ -20,7 +20,7 @@ const VideoCard: NextPage<IProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [dropdown, setDropdown] = useState(false);
 
-  console.log(likes);
+  console.log(comments);
 
   const onVideoPress = () => {
     if (playing) {
@@ -86,99 +86,6 @@ const VideoCard: NextPage<IProps> = ({
           </div>
         </div>
       </div>
-      <div className="mt-2 w-full flex relative justify-between">
-        <h6 className="text-center font-notoSans text-[15px] text-gray-900">
-          20 Likes
-        </h6>
-        <div onClick={() => setDropdown(!dropdown)} className="absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] cursor-pointer">
-          {dropdown ? (
-            <BsChevronUp className="text-gray-900 text-[20px]" />
-            ) : (
-            <BsChevronDown className="text-gray-900 text-[20px]" />
-          )}
-        </div>
-        <h6 className="font-notoSans text-[15px] text-gray-900">
-          3 Comments
-        </h6>
-      </div>
-      <div>
-        {dropdown &&
-          <div className="h-[120px] overflow-y-scroll">
-            <div className="mt-2 mb-2">
-              <div className="flex items-start gap-3">
-                <Link href={`/profile/${postedBy?._id}`}>
-                  <div className="w-12 h-12">
-                    <Image
-                      width={48}
-                      height={48}
-                      className="rounded-full cursor-pointer object-cover"
-                      src={postedBy?.image}
-                      alt="user-profile"
-                      layout="responsive"
-                    />
-                  </div>
-                </Link>
-                <div>
-                  <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
-                    Rajan Khunt
-                  </p>
-                  <p className="flex font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
-                    Wow what a web!
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-2 mb-2">
-              <div className="flex items-start gap-3">
-                <Link href={`/profile/${postedBy?._id}`}>
-                  <div className="w-12 h-12">
-                    <Image
-                      width={48}
-                      height={48}
-                      className="rounded-full cursor-pointer object-cover"
-                      src={postedBy?.image}
-                      alt="user-profile"
-                      layout="responsive"
-                    />
-                  </div>
-                </Link>
-                <div>
-                  <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
-                    Rajan Khunt
-                  </p>
-                  <p className="flex font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
-                    Wow what a web!
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-2 mb-2">
-              <div className="flex items-start gap-3">
-                <Link href={`/profile/${postedBy?._id}`}>
-                  <div className="w-12 h-12">
-                    <Image
-                      width={48}
-                      height={48}
-                      className="rounded-full cursor-pointer object-cover"
-                      src={postedBy?.image}
-                      alt="user-profile"
-                      layout="responsive"
-                    />
-                  </div>
-                </Link>
-                <div>
-                  <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
-                    Rajan Khunt
-                  </p>
-                  <p className="flex font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
-                    Wow what a web!
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        }
-      </div>
       <div className="mt-2 flex gap-2 w-[100%]">
         <div>
           <button onClick={() => setLike(!like)} className="flex items-center justify-center w-[46px] h-[46px] bg-[#f9f9f9] border border-[#f4f4f4] rounded-full">
@@ -200,6 +107,117 @@ const VideoCard: NextPage<IProps> = ({
             <AiOutlineComment className="absolute top-[10px] right-[14px] text-gray-900 text-[25px]" />
           </form>
         </div>
+      </div>
+      <div className="mt-2 w-full flex relative justify-between">
+        <h6 className="text-center font-notoSans text-[15px] text-gray-900">
+          {likes?.length ? (
+            likes?.length
+          ) : (
+            0
+          )}
+          {" "}
+          Likes
+        </h6>
+        <div onClick={() => setDropdown(!dropdown)} className="absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] cursor-pointer">
+          {dropdown ? (
+            <BsChevronUp className="text-gray-900 text-[20px]" />
+          ) : (
+            <BsChevronDown className="text-gray-900 text-[20px]" />
+          )}
+        </div>
+        <h6 className="font-notoSans text-[15px] text-gray-900">
+          {comments?.length ? (
+            comments?.length
+          ) : (
+            0
+          )}
+          {" "}
+          Comments
+        </h6>
+      </div>
+      <div>
+        {dropdown &&
+          <div className="max-h-[180px] mt-1 mb-1 overflow-y-scroll">
+            {
+              comments.map((comment) => (
+                <div className="mt-2 mb-2">
+                  <div className="flex items-start gap-3">
+                    <Link href={`/profile/${postedBy?._id}`}>
+                      <div className="w-12 h-12">
+                        <Image
+                          width={48}
+                          height={48}
+                          className="rounded-full cursor-pointer object-cover"
+                          src={comment.postedBy?.image}
+                          alt="user-profile"
+                          layout="responsive"
+                        />
+                      </div>
+                    </Link>
+                    <div>
+                      <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
+                        {comment.postedBy?.userName}
+                      </p>
+                      <p className="flex font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
+                        {comment.comment}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+            {/* <div className="mt-2 mb-2">
+              <div className="flex gap-3 justify-start">
+                <div className="min-w-[48px] h-full">
+                  <Link href={`/profile/${postedBy?._id}`}>
+                    <div>
+                      <Image
+                        width={48}
+                        height={48}
+                        className="rounded-full cursor-pointer object-cover"
+                        src={postedBy?.image}
+                        alt="user-profile"
+                        layout="responsive"
+                      />
+                    </div>
+                  </Link>
+                </div>
+                <div>
+                  <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
+                    Rajan Khunt
+                  </p>
+                  <p className="flex overflow-auto font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
+                    Wow what a web! penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-2 mb-2">
+              <div className="flex items-start gap-3">
+                <Link href={`/profile/${postedBy?._id}`}>
+                  <div className="w-12 h-12">
+                    <Image
+                      width={48}
+                      height={48}
+                      className="rounded-full cursor-pointer object-cover"
+                      src={postedBy?.image}
+                      alt="user-profile"
+                      layout="responsive"
+                    />
+                  </div>
+                </Link>
+                <div>
+                  <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
+                    Rajan Khunt
+                  </p>
+                  <p className="flex font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
+                    Wow what a web!
+                  </p>
+                </div>
+              </div>
+            </div> */}
+          </div>
+        }
       </div>
     </div>
   );

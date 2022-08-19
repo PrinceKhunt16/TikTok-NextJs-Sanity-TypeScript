@@ -9,6 +9,8 @@ interface IProps {
 }
 
 const Home = ({ videos }: IProps) => {
+  console.log(videos);
+
   return (
     <div className="flex flex-col items-center videos w-full">
       {videos.length ? (
