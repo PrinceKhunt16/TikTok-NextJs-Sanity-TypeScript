@@ -6,11 +6,10 @@ import { Video } from "../types";
 
 interface IProps {
   videos: Video[];
+  topic: string
 }
 
-const Home = ({ videos }: IProps) => {
-  console.log(videos);
-
+const Home = ({ videos, topic }: IProps) => {
   return (
     <div className="flex flex-col items-center videos w-full">
       {videos.length ? (
@@ -18,7 +17,7 @@ const Home = ({ videos }: IProps) => {
           <VideoCard post={video} key={video._id} />
         ))
       ) : (
-        <NoResults text={`No Videos`} />
+        <NoResults text={`No Videos on ${topic}`} />
       )}
     </div>
   );
@@ -38,6 +37,6 @@ export const getServerSideProps = async ({
   }
 
   return {
-    props: { videos: response.data },
+    props: { videos: response.data, topic: topic || '' },
   };
 };

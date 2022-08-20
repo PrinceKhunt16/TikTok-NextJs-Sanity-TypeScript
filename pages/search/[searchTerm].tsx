@@ -12,55 +12,54 @@ import useAuthStore from "../../store/authStore";
 const Search = ({ videos }: { videos: Video[] }) => {
   const [isAccounts, setIsAccounts] = useState(false);
   const { allUsers }: { allUsers: IUser[] } = useAuthStore();
-  
+
   const router = useRouter();
   const { searchTerm }: any = router.query;
-  
-  const accounts = isAccounts ? "border-b-2 border-black" : "text-gray-400";
-  const isVideos = !isAccounts ? "border-b-2 border-black" : "text-gray-400";
-  
+
+  const videosCss = isAccounts ? "" : "text-gray-500 font-normal font-notoSans";
+  const accountCss = !isAccounts ? "" : "text-gray-500 font-normal font-notoSans";
+
   const searchedAccounts = allUsers?.filter((user: IUser) => user.userName.toLowerCase().includes(searchTerm));
-  
+
   return (
     <div className="w-full">
-      <div className="flex gap-10 mb-10 border-b-2 border-gray-200 md:fixed z-50 bg-white w-full">
+      <div className="flex sticky z-10 pt-2 pb-4 top-0 gap-5 border-b border-gray-200 bg-white w-[95%] mx-auto md:w-[450px] lg:w-[585px]">
         <p
+          className={`text-[17px] font-normal font-notoSans cursor-pointer ${videosCss} mt-2`}
           onClick={() => setIsAccounts(true)}
-          className={`text-xl  font-semibold cursor-pointer ${accounts} mt-2`}
         >
           Accounts
         </p>
         <p
-          className={`text-xl font-semibold cursor-pointer ${isVideos} mt-2`}
+          className={`text-[17px] font-normal font-notoSans cursor-pointer ${accountCss} mt-2`}
           onClick={() => setIsAccounts(false)}
         >
           Videos
         </p>
       </div>
       {isAccounts ? (
-        <div className="md:mt-16">
+        <div className="w-[95%] mx-auto md:w-[450px] lg:w-[585px]">
           {searchedAccounts.length > 0 ? (
             searchedAccounts.map((user: IUser, idx: number) => (
-              <Link key={idx} href={`/profile/${user._id}`}>
-                <div className=" flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200">
-                  <div>
+              <Link href={`/profile/${user._id}`} key={user._id}>
+                <div className='flex justify-start items-center gap-3 pt-2 pb-2 cursor-pointer font-semibold border-b border-slate-200'>
+                  <div className='w-[48px] h-[48px]'>
                     <Image
                       width={50}
                       height={50}
-                      className="rounded-full"
-                      alt="user-profile"
+                      className='rounded-full object-cover'
                       src={user.image}
+                      alt='user-profile'
+                      layout='responsive'
                     />
                   </div>
                   <div>
-                    <div>
-                      <p className="flex gap-1 items-center text-lg font-bold text-primary">
-                        {user.userName} <GoVerified className="text-blue-400" />
-                      </p>
-                      <p className="capitalize text-gray-400 text-sm">
-                        {user.userName}
-                      </p>
-                    </div>
+                    <p className='flex gap-1 leading-[13px] text-base font-normal font-notoSans text-primary lowercase'>
+                      {user.userName.replace(/\s+/g, '')}
+                    </p>
+                    <p className='capitalize text-gray-800 font-Caveat text-[18px] pt-1'>
+                      {user.userName}
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -70,12 +69,12 @@ const Search = ({ videos }: { videos: Video[] }) => {
           )}
         </div>
       ) : (
-        <div className="md:mt-16 flex flex-wrap gap-6 md:justify-start ">
+        <div className="flex flex-col items-center gap-6">
           {videos.length ? (
             videos.map((post: Video, idx: number) => (
               <VideoCard post={post} key={idx} />
             ))
-          ) : (
+          ) : ( 
             <NoResults text={`No Video Results for ${searchTerm}`} />
           )}
         </div>

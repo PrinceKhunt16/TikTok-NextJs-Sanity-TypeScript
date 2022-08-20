@@ -51,7 +51,7 @@ const Profile = ({ data }: IProps) => {
         </div>
       </div>
       <div>
-        <div className="flex sticky z-10 pb-2 top-0 gap-5 mb-4 mt-[40px] border-b border-gray-200 bg-white w-[95%] mx-auto md:w-[450px] lg:w-[585px]">
+        <div className="flex sticky z-10 pb-3 pt-1 top-0 gap-5 mb-4 mt-[40px] border-b border-gray-200 bg-white w-[95%] mx-auto md:w-[450px] lg:w-[585px]">
           <p
             className={`text-[17px] font-normal font-notoSans cursor-pointer ${videos} mt-2`}
             onClick={() => setShowUserVideos(true)}

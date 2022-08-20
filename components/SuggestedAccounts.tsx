@@ -40,8 +40,7 @@ const SuggestedAccounts: NextPage<IProps> = ({ fetchAllUsers, allUsers }) => {
               </div>
               <div className='hidden md:block'>
                 <p className='flex gap-1 leading-[13px] text-base font-normal font-notoSans text-primary lowercase'>
-                  {user.userName.replace(/\s+/g, '')}{' '}
-                  <GoVerified className='text-blue-400' />
+                  {user.userName.replace(/\s+/g, '')}
                 </p>
                 <p className='capitalize text-gray-800 font-Caveat text-[18px] pt-1'>
                   {user.userName}

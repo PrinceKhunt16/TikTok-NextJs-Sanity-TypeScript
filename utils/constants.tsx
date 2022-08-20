@@ -35,7 +35,7 @@ export const topics = [
     icon: accessibility
   },
   {
-    name: 'americanfootball',
+    name: 'football',
     icon: americanfootball
   },
   {
@@ -83,7 +83,7 @@ export const topics = [
     icon: earth
   },
   {
-    name: 'americanfootball',
+    name: 'sports',
     icon: americanfootball
   },
   {

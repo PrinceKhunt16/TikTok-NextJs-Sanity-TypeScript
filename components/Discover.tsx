@@ -10,9 +10,9 @@ const Discover: NextPage = () => {
   const { topic } = router.query;
 
   const activeTopicStyle =
-    "border border-gray-400 h-[50px] w-[50px] px-3 py-2 rounded rounded-full flex items-center gap-2 justify-center cursor-pointer text-gray-600";
+    "border border-gray-400 h-[50px] w-[50px] px-3 py-2 rounded-full flex items-center gap-2 justify-center cursor-pointer text-gray-600";
   const topicStyle =
-    "border border-gray-300 h-[50px] w-[50px] px-3 py-2 rounded rounded-full flex items-center gap-2 justify-center cursor-pointer text-gray-400";
+    "border border-gray-300 h-[50px] w-[50px] px-3 py-2 rounded-full flex items-center gap-2 justify-center cursor-pointer text-gray-400";
 
   return (
     <div className="border-b border-gray-100 pb-4 mt-4">
