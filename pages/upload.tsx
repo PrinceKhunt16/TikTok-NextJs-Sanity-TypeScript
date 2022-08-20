@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SanityAssetDocument } from "@sanity/client";
 import { useRouter } from "next/router";
-import { FaCloudUploadAlt } from "react-icons/fa";
+import { AiOutlineCloudUpload } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { client } from "../utils/client";
@@ -85,39 +85,33 @@ const Upload = () => {
   }, [userProfile, router]);
 
   return (
-    <div className='flex w-full h-full absolute left-0 top-[60px] lg:top-[70px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] justify-center'>
-      <div className=' bg-white rounded-lg xl:h-[80vh] flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
+    <div className='flex w-[95%] md:w-[450px] lg:w-[585px] mx-auto'>
+      <div className='bg-white rounded-lg flex flex-col w-full gap-6 pt-4'>
         <div>
           <div>
-            <p className='text-2xl font-bold'>Upload Video</p>
-            <p className='text-md text-gray-400 mt-1'>Post a video to your account</p>
+            <p className='text-[21px] font-normal font-openSans'>Upload Video</p>
+            <p className='text-gray-500 text-[24px] font-normal font-Caveat'>Post a video to your account</p>
           </div>
-          <div className=' border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center  outline-none mt-10 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100'>
+          <div className='border rounded-xl border-gray-200 w-full flex flex-col justify-center items-center outline-none mt-6 cursor-pointer hover:border-gray-500 hover:bg-gray-50'>
             {loading ? (
-              <p className='text-center text-3xl text-red-400 font-semibold'>
-                Uploading...
+              <p className='text-center text-[21px] py-20 font-normal font-openSans'>
+                Uploading
               </p>
             ) : (
               <div>
                 {!videoAsset ? (
                   <label className='cursor-pointer'>
-                    <div className='flex flex-col items-center justify-center h-full'>
+                    <div className='flex flex-col items-center pt-5 justify-center'>
                       <div className='flex flex-col justify-center items-center'>
-                        <p className='font-bold text-xl'>
-                          <FaCloudUploadAlt className='text-gray-300 text-6xl' />
-                        </p>
-                        <p className='text-xl font-semibold'>
+                        <p className='text-xl font-normal font-notoSans'>
                           Select video to upload
                         </p>
                       </div>
-                      <p className='text-gray-400 text-center mt-10 text-sm leading-10'>
+                      <p className='text-gray-400 font-notoSans text-center mt-4 text-sm leading-7'>
                         MP4 or WebM or ogg <br />
                         720x1280 resolution or higher <br />
                         Up to 10 minutes <br />
                         Less than 2 GB
-                      </p>
-                      <p className='bg-[#F51997] text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none'>
-                        Select file
                       </p>
                     </div>
                     <input
@@ -128,18 +122,17 @@ const Upload = () => {
                     />
                   </label>
                 ) : (
-                  <div className=' rounded-3xl w-[300px] p-4 flex flex-col gap-6 justify-center items-center'>
+                  <div className='flex py-4 flex-col gap-6 justify-center items-center'>
                     <video
-                      className='rounded-xl h-[462px] mt-16 bg-black'
+                      className='h-[462px] bg-black'
                       controls
                       loop
                       src={videoAsset?.url}
                     />
-                    <div className=' flex justify-between gap-20'>
-                      <p className='text-lg'>{videoAsset.originalFilename}</p>
+                    <div className='flex justify-between'>
                       <button
                         type='button'
-                        className=' rounded-full bg-gray-200 text-red-400 p-2 text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out'
+                        className='rounded-full bg-gray-200 text-gray-500 p-2 text-[24px] cursor-pointer outline-none'
                         onClick={() => setVideoAsset(undefined)}
                       >
                         <MdDelete />
@@ -157,19 +150,19 @@ const Upload = () => {
           )}
         </div>
         <div className='flex flex-col gap-3 pb-10'>
-          <label className='text-md font-medium '>Caption</label>
+          <label className='text-gray-500 font-normal font-notoSans'>Caption</label>
           <input
             type='text'
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
-            className='rounded lg:after:w-650 outline-none text-md border-2 border-gray-200 p-2'
+            className='rounded outline-none font-notoSans text-md border border-gray-200 p-3'
           />
-          <label className='text-md font-medium '>Choose a topic</label>
+          <label className='text-gray-500 font-normal font-notoSans'>Choose a topic</label>
           <select
             onChange={(e) => {
               setTopic(e.target.value);
             }}
-            className='outline-none lg:w-650 border-2 border-gray-200 text-md capitalize lg:p-4 p-2 rounded cursor-pointer'
+            className='outline-none font-notoSans border border-gray-200 text-md capitalize p-3 rounded cursor-pointer'
           >
             {topics.map((item) => (
               <option
@@ -181,11 +174,11 @@ const Upload = () => {
               </option>
             ))}
           </select>
-          <div className='flex gap-6 mt-10'>
+          <div className='flex gap-1.5 sm:gap-3 mt-3'>
             <button
               onClick={handleDiscard}
               type='button'
-              className='border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
+              className='border-gray-300 border font-notoSans text-md font-normal p-3 rounded w-32 outline-none'
             >
               Discard
             </button>
@@ -193,9 +186,9 @@ const Upload = () => {
               disabled={videoAsset?.url ? false : true}
               onClick={handlePost}
               type='button'
-              className='bg-[#F51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
+              className='bg-gray-300 border-gray-300 border font-notoSans text-md font-normal p-3 rounded w-32 outline-none'
             >
-              {savingPost ? 'Posting...' : 'Post'}
+              {savingPost ? 'Posting' : 'Post'}
             </button>
           </div>
         </div>

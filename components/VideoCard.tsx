@@ -33,7 +33,7 @@ const VideoCard: NextPage<IProps> = ({
   };
 
   return (
-    <div className="flex items-start mt-4 pb-4 border-b border-gray-100 flex-col w-[95%] md:w-[450px] lg:w-[585px] ">
+    <div className="flex items-start mt-4 pb-3 border-b border-gray-100 flex-col w-[95%] md:w-[450px] lg:w-[585px]">
       <div>
         <div className="flex gap-2 cursor-pointer font-semibold rounded ">
           <div className="w-[50px] h-[50px] border border-gray-100 rounded-full">
@@ -138,7 +138,7 @@ const VideoCard: NextPage<IProps> = ({
       <div>
         {dropdown &&
           <div className="max-h-[180px] mt-1 mb-1 overflow-y-scroll">
-            {
+            { comments &&
               comments.map((comment) => (
                 <div className="mt-2 mb-2">
                   <div className="flex items-start gap-3">
@@ -166,56 +166,6 @@ const VideoCard: NextPage<IProps> = ({
                 </div>
               ))
             }
-            {/* <div className="mt-2 mb-2">
-              <div className="flex gap-3 justify-start">
-                <div className="min-w-[48px] h-full">
-                  <Link href={`/profile/${postedBy?._id}`}>
-                    <div>
-                      <Image
-                        width={48}
-                        height={48}
-                        className="rounded-full cursor-pointer object-cover"
-                        src={postedBy?.image}
-                        alt="user-profile"
-                        layout="responsive"
-                      />
-                    </div>
-                  </Link>
-                </div>
-                <div>
-                  <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
-                    Rajan Khunt
-                  </p>
-                  <p className="flex overflow-auto font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
-                    Wow what a web! penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-2 mb-2">
-              <div className="flex items-start gap-3">
-                <Link href={`/profile/${postedBy?._id}`}>
-                  <div className="w-12 h-12">
-                    <Image
-                      width={48}
-                      height={48}
-                      className="rounded-full cursor-pointer object-cover"
-                      src={postedBy?.image}
-                      alt="user-profile"
-                      layout="responsive"
-                    />
-                  </div>
-                </Link>
-                <div>
-                  <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
-                    Rajan Khunt
-                  </p>
-                  <p className="flex font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
-                    Wow what a web!
-                  </p>
-                </div>
-              </div>
-            </div> */}
           </div>
         }
       </div>
