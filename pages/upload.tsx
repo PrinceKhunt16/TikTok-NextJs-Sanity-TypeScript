@@ -89,12 +89,12 @@ const Upload = () => {
       <div className='bg-white rounded-lg flex flex-col w-full gap-6 pt-4'>
         <div>
           <div>
-            <p className='text-[21px] font-normal font-openSans'>Upload Video</p>
+            <p className='text-[21px] font-normal'>Upload Video</p>
             <p className='text-gray-500 text-[24px] font-normal font-Caveat'>Post a video to your account</p>
           </div>
           <div className='border rounded-xl border-gray-200 w-full flex flex-col justify-center items-center outline-none mt-6 cursor-pointer hover:border-gray-500 hover:bg-gray-50'>
             {loading ? (
-              <p className='text-center text-[21px] py-20 font-normal font-openSans'>
+              <p className='text-center text-[21px] py-20 font-normal'>
                 Uploading
               </p>
             ) : (
@@ -103,11 +103,11 @@ const Upload = () => {
                   <label className='cursor-pointer'>
                     <div className='flex flex-col items-center pt-5 justify-center'>
                       <div className='flex flex-col justify-center items-center'>
-                        <p className='text-xl font-normal font-notoSans'>
+                        <p className='text-xl font-normal'>
                           Select video to upload
                         </p>
                       </div>
-                      <p className='text-gray-400 font-notoSans text-center mt-4 text-sm leading-7'>
+                      <p className='text-gray-400 text-center mt-4 text-sm leading-7'>
                         MP4 or WebM or ogg <br />
                         720x1280 resolution or higher <br />
                         Up to 10 minutes <br />
@@ -144,25 +144,25 @@ const Upload = () => {
             )}
           </div>
           {wrongFileType && (
-            <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[260px]'>
+            <p className='text-center text-red-600 mt-4'>
               Please select an video file (mp4 or webm or ogg)
             </p>
           )}
         </div>
         <div className='flex flex-col gap-3 pb-10'>
-          <label className='text-gray-500 font-normal font-notoSans'>Caption</label>
+          <label className='text-gray-500 font-normal'>Caption</label>
           <input
             type='text'
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
-            className='rounded outline-none font-notoSans text-md border border-gray-200 p-3'
+            className='rounded outline-none text-md border border-gray-200 p-3'
           />
-          <label className='text-gray-500 font-normal font-notoSans'>Choose a topic</label>
+          <label className='text-gray-500 font-normal'>Choose a topic</label>
           <select
             onChange={(e) => {
               setTopic(e.target.value);
             }}
-            className='outline-none font-notoSans border border-gray-200 text-md capitalize p-3 rounded cursor-pointer'
+            className='outline-none border border-gray-200 text-md capitalize p-3 rounded cursor-pointer'
           >
             {topics.map((item) => (
               <option
@@ -178,7 +178,7 @@ const Upload = () => {
             <button
               onClick={handleDiscard}
               type='button'
-              className='border-gray-300 border font-notoSans text-md font-normal p-3 rounded w-32 outline-none'
+              className='border-gray-300 border text-md font-normal p-3 rounded w-32 outline-none'
             >
               Discard
             </button>
@@ -186,7 +186,7 @@ const Upload = () => {
               disabled={videoAsset?.url ? false : true}
               onClick={handlePost}
               type='button'
-              className='bg-gray-300 border-gray-300 border font-notoSans text-md font-normal p-3 rounded w-32 outline-none'
+              className='bg-gray-300 border-gray-300 border text-md font-normal p-3 rounded w-32 outline-none'
             >
               {savingPost ? 'Posting' : 'Post'}
             </button>

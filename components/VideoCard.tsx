@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,7 +28,7 @@ const VideoCard: NextPage<IProps> = ({
   const [playing, setPlaying] = useState(false);
   const [like, setLike] = useState(likes?.length);
   const [commentLength, setCommentLength] = useState(comments?.length);
-  const [post, setPost] = useState({caption, postedBy, video, _id, likes, comments});
+  const [post, setPost] = useState({ caption, postedBy, video, _id, likes, comments });
   const [allComments, setAllComments] = useState(comments);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [dropdown, setDropdown] = useState(false);
@@ -98,13 +98,13 @@ const VideoCard: NextPage<IProps> = ({
           <div className="flex flex-col justify-between">
             <Link href={`/profile/${postedBy?._id}`}>
               <div className="flex items-center gap-2">
-                <p className="flex gap-2 font-notoSans items-center md:text-[15px] font-normal text-primary">
+                <p className="flex gap-2 items-center md:text-[15px] font-normal text-primary">
                   {postedBy.userName}{" "}
                 </p>
               </div>
             </Link>
             <div className="flex gap-1 overflow-hidden">
-              <p className="font-notoSans font-normal text-[15px]">{caption}</p>
+              <p className="font-normal text-[15px]">{caption}</p>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@ const VideoCard: NextPage<IProps> = ({
             onSubmit={addComment}
           >
             <input
-              className="bg-[#f9f9f9] text-[15px] w-full p-3 pb-[14px] h-[46px] md:text-md font-notoSans text-gray-900 font-normal border border-[#f4f4f4] focus:outline-none rounded-full md:top-0"
+              className="bg-[#f9f9f9] text-[15px] w-full p-3 pb-[14px] h-[46px] md:text-md text-gray-900 font-normal border border-[#f4f4f4] focus:outline-none rounded-full md:top-0"
               placeholder="Add a Comment"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -153,7 +153,7 @@ const VideoCard: NextPage<IProps> = ({
         </div>
       </div>
       <div className="mt-2 w-full flex relative justify-between">
-        <h6 className="text-center font-notoSans text-[15px] text-gray-900">
+        <h6 className="text-center text-[15px] text-gray-900">
           {`${like} Likes`}
         </h6>
         <div onClick={() => setDropdown(!dropdown)} className="absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] cursor-pointer">
@@ -163,7 +163,7 @@ const VideoCard: NextPage<IProps> = ({
             <BsChevronDown className="text-gray-900 text-[20px]" />
           )}
         </div>
-        <h6 className="font-notoSans text-[15px] text-gray-900">
+        <h6 className="text-[15px] text-gray-900">
           {commentLength ? (
             commentLength
           ) : (
@@ -183,29 +183,29 @@ const VideoCard: NextPage<IProps> = ({
                     (user: IUser) =>
                       user._id === (comment.postedBy._ref || comment.postedBy._id) && (
                         <div className="mt-2 mb-2">
-                        <div className="flex items-start gap-3">
-                          <Link href={`/profile/${postedBy?._id}`}>
-                            <div className="w-12 h-12">
-                              <Image
-                                width={48}
-                                height={48}
-                                className="rounded-full cursor-pointer object-cover"
-                                src={user.image}
-                                alt="user-profile"
-                                layout="responsive"
-                              />
+                          <div className="flex items-start gap-3">
+                            <Link href={`/profile/${postedBy?._id}`}>
+                              <div className="w-12 h-12">
+                                <Image
+                                  width={48}
+                                  height={48}
+                                  className="rounded-full cursor-pointer object-cover"
+                                  src={user.image}
+                                  alt="user-profile"
+                                  layout="responsive"
+                                />
+                              </div>
+                            </Link>
+                            <div>
+                              <p className="flex gap-1 items-center text-[12px] font-bold leading-6 text-primary">
+                                {user.userName}
+                              </p>
+                              <p className="flex gap-1 items-center text-[15px] font-normal leading-6 text-primary">
+                                {comment.comment}
+                              </p>
                             </div>
-                          </Link>
-                          <div>
-                            <p className="flex font-notoSans gap-1 items-center text-[12px] font-bold leading-6 text-primary">
-                              {user.userName}
-                            </p>
-                            <p className="flex font-notoSans gap-1 items-center text-[15px] font-normal leading-6 text-primary">
-                              {comment.comment}
-                            </p>
                           </div>
                         </div>
-                      </div>
                       )
                   )}
                 </>

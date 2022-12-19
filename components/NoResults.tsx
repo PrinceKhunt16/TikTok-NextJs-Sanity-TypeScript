@@ -7,7 +7,7 @@ interface IProps {
 const NoResults = ({ text }: IProps) => {
   return (
     <div className='mt-10'>
-      <p className='text-gray-500 font-normal font-notoSans'>{text}</p>
+      <p className='text-gray-500 font-normal'>{text}</p>
     </div>
   );
 };

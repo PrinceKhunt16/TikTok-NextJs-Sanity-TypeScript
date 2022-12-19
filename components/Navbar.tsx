@@ -35,18 +35,18 @@ const Navbar = () => {
           <input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="bg-[#f9f9f9] p-3 pb-[14px] text-[15px] h-[46px] md:text-md font-notoSans font-normal border text-gray-900 border-[#f6f6f6] focus:outline-none w-[320px] sm:w-[280px] md:w-[310px] rounded-full md:top-0"
+            className="bg-[#f9f9f9] p-3 pb-[14px] text-[15px] h-[44px] md:text-md font-normal border text-gray-900 border-[#f6f6f6] focus:outline-none w-[320px] sm:w-[280px] md:w-[310px] rounded-full md:top-0"
             placeholder="Search accounts and videos"
           />
           <button
             onClick={handleSearch}
-            className="absolute md:right-[10px] right-[10px] top-[8px] pl-4 text-2xl text-gray-400"
+            className="absolute md:right-[10px] right-[10px] top-[9px] pl-4 text-2xl text-gray-400"
           >
             <Image
               className="rounded-full cursor-pointer"
               src={searchIcon}
               alt="search"
-              width={23}
+              width={20}
               height={23}
             />
           </button>
@@ -98,7 +98,7 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <span className="font-notoSans flex items-center justify-center pr-2 xl:pr-0">
+            <span className="flex items-center justify-center pr-2 xl:pr-0">
               <GoogleLogin
                 onSuccess={(response) => {
                   createOrGetUser(response, addUser);

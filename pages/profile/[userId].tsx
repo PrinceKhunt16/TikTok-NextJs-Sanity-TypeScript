@@ -18,8 +18,8 @@ const Profile = ({ data }: IProps) => {
   const [showUserVideos, setShowUserVideos] = useState<Boolean>(true);
   const [videosList, setVideosList] = useState<Video[]>([]);
   const { user, userVideos, userLikedVideos } = data;
-  const videos = showUserVideos ? "" : "text-gray-500 font-normal font-notoSans";
-  const liked = !showUserVideos ? "" : "text-gray-500 font-normal font-notoSans";
+  const videos = showUserVideos ? "" : "text-gray-500 font-normal";
+  const liked = !showUserVideos ? "" : "text-gray-500 font-normal";
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -53,13 +53,13 @@ const Profile = ({ data }: IProps) => {
       <div>
         <div className="flex sticky z-10 pb-3 pt-1 top-0 gap-5 mb-4 mt-[40px] border-b border-gray-200 bg-white w-[95%] mx-auto md:w-[450px] lg:w-[585px]">
           <p
-            className={`text-[17px] font-normal font-notoSans cursor-pointer ${videos} mt-2`}
+            className={`text-[17px] font-normal cursor-pointer ${videos} mt-2`}
             onClick={() => setShowUserVideos(true)}
           >
             Videos
           </p>
           <p
-            className={`text-[17px] font-normal font-notoSans cursor-pointer ${liked} mt-2`}
+            className={`text-[17px] font-normal cursor-pointer ${liked} mt-2`}
             onClick={() => setShowUserVideos(false)}
           >
             Liked

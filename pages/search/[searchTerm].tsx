@@ -16,8 +16,8 @@ const Search = ({ videos }: { videos: Video[] }) => {
   const router = useRouter();
   const { searchTerm }: any = router.query;
 
-  const videosCss = isAccounts ? "" : "text-gray-500 font-normal font-notoSans";
-  const accountCss = !isAccounts ? "" : "text-gray-500 font-normal font-notoSans";
+  const videosCss = isAccounts ? "" : "text-gray-500 font-normal";
+  const accountCss = !isAccounts ? "" : "text-gray-500 font-normal";
 
   const searchedAccounts = allUsers?.filter((user: IUser) => user.userName.toLowerCase().includes(searchTerm));
 
@@ -25,13 +25,13 @@ const Search = ({ videos }: { videos: Video[] }) => {
     <div className="w-full">
       <div className="flex sticky z-10 pt-2 pb-4 top-0 gap-5 border-b border-gray-200 bg-white w-[95%] mx-auto md:w-[450px] lg:w-[585px]">
         <p
-          className={`text-[17px] font-normal font-notoSans cursor-pointer ${videosCss} mt-2`}
+          className={`text-[17px] font-normal cursor-pointer ${videosCss} mt-2`}
           onClick={() => setIsAccounts(true)}
         >
           Accounts
         </p>
         <p
-          className={`text-[17px] font-normal font-notoSans cursor-pointer ${accountCss} mt-2`}
+          className={`text-[17px] font-normal cursor-pointer ${accountCss} mt-2`}
           onClick={() => setIsAccounts(false)}
         >
           Videos
@@ -54,7 +54,7 @@ const Search = ({ videos }: { videos: Video[] }) => {
                     />
                   </div>
                   <div>
-                    <p className='flex gap-1 leading-[13px] text-base font-normal font-notoSans text-primary lowercase'>
+                    <p className='flex gap-1 leading-[13px] text-base font-normal text-primary lowercase'>
                       {user.userName.replace(/\s+/g, '')}
                     </p>
                     <p className='capitalize text-gray-800 font-Caveat text-[18px] pt-1'>

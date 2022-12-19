@@ -68,7 +68,7 @@ const Comments = ({
             </>
           ))
         ) : (
-          <h2 className="font-openSans">No Comments yet!</h2>
+          <h2>No Comments yet!</h2>
         )}
       </div>
       {userProfile && (

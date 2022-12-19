@@ -21,7 +21,7 @@ const SuggestedAccounts: NextPage<IProps> = ({ fetchAllUsers, allUsers }) => {
 
   return (
     <div className='border-b border-gray-100 pb-2 pt-2'>
-      <p className='text-gray-500 font-normal font-notoSans mb-2 mt-2 hidden md:block'>
+      <p className='text-gray-500 font-normal mb-2 mt-2 hidden md:block'>
         Popular Accounts
       </p>
       <div>
@@ -39,7 +39,7 @@ const SuggestedAccounts: NextPage<IProps> = ({ fetchAllUsers, allUsers }) => {
                 />
               </div>
               <div className='hidden md:block'>
-                <p className='flex gap-1 leading-[13px] text-base font-normal font-notoSans text-primary lowercase'>
+                <p className='flex gap-1 leading-[13px] text-base font-normal text-primary lowercase'>
                   {user.userName.replace(/\s+/g, '')}
                 </p>
                 <p className='capitalize text-gray-800 font-Caveat text-[18px] pt-1'>

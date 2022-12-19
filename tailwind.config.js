@@ -15,9 +15,8 @@ module.exports = {
         650: '650px',
       },
       fontFamily: {
-        openSans: "'Open Sans', sans-serif",
-        notoSans: "'Noto Sans JP', sans-serif",
-        Caveat: "'Caveat', cursive"
+        Caveat: "'Caveat', cursive",
+        sans: 'Roboto',
       },
       height: {
         600: '600px',
