@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SanityAssetDocument } from "@sanity/client";
 import { useRouter } from "next/router";
-import { AiOutlineCloudUpload } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { client } from "../utils/client";

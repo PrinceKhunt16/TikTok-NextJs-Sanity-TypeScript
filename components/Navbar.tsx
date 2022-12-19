@@ -35,7 +35,7 @@ const Navbar = () => {
           <input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="bg-[#f9f9f9] p-3 pb-[14px] text-[15px] h-[44px] md:text-md font-normal border text-gray-900 border-[#f6f6f6] focus:outline-none w-[320px] sm:w-[280px] md:w-[310px] rounded-full md:top-0"
+            className="bg-[#f9f9f9] p-3 pb-[14px] text-[15px] h-[44px] md:text-md border text-gray-900 border-[#f6f6f6] focus:outline-none w-[320px] sm:w-[280px] md:w-[310px] rounded-full md:top-0"
             placeholder="Search accounts and videos"
           />
           <button
@@ -54,21 +54,21 @@ const Navbar = () => {
       </div>
       <div>
         {userProfile ? (
-          <div className="flex gap-3 h-[45px] pr-2 xl:pr-0">
+          <div className="flex gap-3 h-[43px] pr-2 xl:pr-0">
             <Link href="/upload">
-              <button className="border h-[45px] w-[45px] text-xl font-semibold flex items-center justify-center box-border rounded-full">
+              <button className="border h-[43px] w-[43px] text-xl font-semibold flex items-center justify-center box-border rounded-full">
                 <Image
                   className="rounded-full cursor-pointer"
                   src={addIcon}
                   alt="user"
-                  width={22}
-                  height={22}
+                  width={20}
+                  height={20}
                 />
               </button>
             </Link>
             <button
               type="button"
-              className="border h-[45px] w-[45px] flex items-center justify-center rounded-full cursor-pointer outline-none"
+              className="border h-[43px] w-[43px] flex items-center justify-center rounded-full cursor-pointer outline-none"
               onClick={() => {
                 googleLogout();
                 removeUser();
@@ -78,19 +78,19 @@ const Navbar = () => {
                 className="rounded-full cursor-pointer"
                 src={logoutIcon}
                 alt="user"
-                width={22}
-                height={22}
+                width={20}
+                height={20}
               />
             </button>
-            {userProfile.image && (
-              <Link href={`/profile/${userProfile._id}`}>
+            {userProfile?.image && (
+              <Link href={`/profile/${userProfile?._id}`}>
                 <div>
                   <Image
                     className="rounded-full cursor-pointer"
-                    src={userProfile.image}
+                    src={userProfile?.image}
                     alt="user"
-                    width={45}
-                    height={45}
+                    width={43}
+                    height={43}
                   />
                 </div>
               </Link>

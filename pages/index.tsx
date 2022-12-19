@@ -1,5 +1,4 @@
 import axios from "axios";
-import type { NextPage } from "next";
 import NoResults from "../components/NoResults";
 import VideoCard from "../components/VideoCard";
 import { Video } from "../types";
